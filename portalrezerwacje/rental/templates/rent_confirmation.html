@@ -1,0 +1,8 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<h1>Rent Confirmation</h1>
+<p>You have rented {{ rental.car.main.make }} {{ rental.car.main.models }} from {{ rental.start_date|date:"d-m-Y" }} to
+    {{ rental.end_date|date:"d-m-Y" }} for {{ rental.total_price }} PLN.</p>
+
+{% endblock %}

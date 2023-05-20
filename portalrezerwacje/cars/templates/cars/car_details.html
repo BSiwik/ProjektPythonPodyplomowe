@@ -1,0 +1,41 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+  <h1>{{ car.main.make }} {{ car.main.models }}</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Detail</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Production Date</td>
+        <td>{{ car.detail.production_date }}</td>
+      </tr>
+      <tr>
+        <td>Price per day</td>
+        <td>{{ car.detail.price }}</td>
+      </tr>
+      <tr>
+        <td>Transmission</td>
+        <td>{{ car.detail.transmission }}</td>
+      </tr>
+      <tr>
+        <td>Fuel</td>
+        <td>{{ car.detail.fuel }}</td>
+      </tr>
+      <tr>
+        <td>Seats</td>
+        <td>{{ car.detail.seats }}</td>
+      </tr>
+      <tr>
+        <td>Rent</td>
+        <td>
+          <a href="{% url 'rental:rental_detail' car_id=car.id %}" class="btn btn-primary">Rent</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}

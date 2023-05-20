@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<h1>Rent {{ car.make }} {{ car.model }}</h1>
+{% if request.user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <label for="start_date">Rental start date:</label>
+        <input type="date" name="start_date" min="{% now 'Y-m-d' %}" onchange="setEndDateMin(this.value)" required>
+        <br><br>
+        <label for="end_date">Rental end date:</label>
+        <input type="date" name="end_date" min="{% now 'Y-m-d' %}" required>
+        <br><br>
+        <button type="submit">Rent</button>
+    </form>
+{% else %}
+    <p>You must log in to rent this car.</p>
+{% endif %}
+<script>
+function setEndDateMin(startDate) {
+  document.getElementsByName("end_date")[0].setAttribute("min", startDate);
+}
+</script>
+{% endblock %}

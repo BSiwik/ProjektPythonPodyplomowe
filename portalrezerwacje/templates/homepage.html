@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to SiwikCarRental!</title>
+</head>
+<body>
+    <h1>SiwikCarRental</h1>
+    <p></p>
+    <div>
+        <a href="{% url 'cars:car_list' %}" class="btn btn-primary btn-lg">Go to Car List</a>
+    </div>
+</body>
+
+{% endblock %}

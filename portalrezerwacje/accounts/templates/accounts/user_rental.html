@@ -1,0 +1,21 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Your rentals!</title>
+</head>
+<body>
+    <h1>List of rentals:</h1>
+    <ul>
+        {% for userrental in userrentals %}
+            <li>
+                <form>
+                    <p> {{ userrental.car }} : from {{ userrental.start_date }} to {{userrental.end_date }} </p>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

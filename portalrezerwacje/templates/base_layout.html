@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Welcome to SiwikCarRental!</title>
+    <style>
+      .center {
+        text-align: center;
+      }
+      .button {
+        font-size: 20px;
+        padding: 10px 20px;
+      }
+      .user_rental, .login-link, .signup-link, .logout-link {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+          {% if user.is_authenticated %}
+            <form class="user_rental" action="{% url 'accounts:user_rental' %}" method="post">
+              {% csrf_token %}
+              <button type="submit">My Rentals</button>
+            </form>
+            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
+          {% endif %}
+          {% if not user.is_authenticated %}
+            <form class="login-link" action="{% url 'accounts:login' %}">
+              {% csrf_token %}
+              <button type="submit">Login</button>
+            </form>
+          {% endif %}
+          {% if not user.is_authenticated %}
+            <form class="signup-link" action="{% url 'accounts:signup' %}">
+              {% csrf_token %}
+              <button type="submit">Signup</button>
+            </form>
+          {% endif %}
+          <li><a href="{% url 'homepage' %}">Homepage</a></li>
+          <li><a href="{% url 'cars:car_list' %}">Cars</a></li>
+      </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
